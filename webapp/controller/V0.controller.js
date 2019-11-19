@@ -363,7 +363,9 @@ sap.ui.define([
 				var oTempArray = [];
 
 				// Disable Busy Indicator
+				debugger;
 				oJsonModel.setProperty("/BusyControl/Chart02", false);
+				oJsonModel.setProperty("/BusyControl/Chart03", false);
 
 				// Run All Itens Returned
 				for (var i = 0; i < oData.results.length; i++) {
@@ -387,6 +389,7 @@ sap.ui.define([
 			function onError(oError) {
 
 				// Disable Busy Indicator
+				debugger;
 				oJsonModel.setProperty("/BusyControl/Chart02", false);
 				oJsonModel.setProperty("/BusyControl/Chart03", false);
 
@@ -408,6 +411,7 @@ sap.ui.define([
 			oJsonModel.setProperty("/ChartData/BlockSystems", oTemp);
 
 			// Enable Busy Indicator
+			debugger;
 			oJsonModel.setProperty("/BusyControl/Chart02", true);
 			oJsonModel.setProperty("/BusyControl/Chart03", true);
 

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0" xmlns:sap="http://www.sap.com/Protocols/SAPData"
+	xmlns:ux="http://www.sap.com/Protocols/OData4SAP/UX" xmlns:gp="http://www.sap.com/Protocols/SAPData/GenericPlayer">
+	<edmx:DataServices m:DataServiceVersion="2.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+		<Schema Namespace="ZGW_APP_XX_0003_SRV" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" sap:schema-version="1" xml:lang="pt">
+			<EntityType Name="BlockUser" sap:content-version="1">
+				<Key><PropertyRef Name="SystemId"/><PropertyRef Name="Uname"/></Key><Property Name="SystemId" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false" sap:unicode="false" sap:label="ID Sistema"/><Property Name="Uname" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false" sap:unicode="false" sap:label="Nome usuário"/><Property Name="Qty" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="0" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" sap:unicode="false" sap:label="Qtde"/><Property Name="TopUser" Type="Edm.Decimal" Nullable="false" Precision="2" Scale="0" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" sap:unicode="false" sap:label="Top XX Usuários"/></EntityType>
+			<EntityType Name="SystemConfig" sap:content-version="1">
+				<Key><PropertyRef Name="Sysid"/></Key><Property Name="Sysid" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false" sap:unicode="false" sap:label="ID Sistema"/><Property Name="Descr" Type="Edm.String" Nullable="false" MaxLength="70" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false" sap:unicode="false" sap:label="Descrição"/><Property Name="Active" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false" sap:unicode="false" sap:label="Ativo?"/><Property Name="Destination" Type="Edm.String" Nullable="false" MaxLength="32" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" sap:unicode="false" sap:label="Destino"/><Property Name="Loguser" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false" sap:unicode="false" sap:label="Nome do usuário"/><Property Name="Logdate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false" sap:unicode="false" sap:label="Data"/><Property Name="Logtime" Type="Edm.Time" Nullable="false" Precision="0" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false" sap:unicode="false" sap:label="Hora"/></EntityType>
+			<EntityContainer Name="ZGW_APP_XX_0003_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="BlockUsers" EntityType="ZGW_APP_XX_0003_SRV.BlockUser" sap:content-version="1" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false"/><EntitySet Name="SystemConfigs" EntityType="ZGW_APP_XX_0003_SRV.SystemConfig" sap:content-version="1" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self"
+				href="https://gwaas-n3b66d216.br1.hana.ondemand.com:443/sap/opu/odata/sap/zgw_app_xx_0003_srv/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version"
+				href="https://gwaas-n3b66d216.br1.hana.ondemand.com:443/sap/opu/odata/sap/zgw_app_xx_0003_srv/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

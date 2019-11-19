@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.m.mvc" xmlns:viz="sap.viz.ui5.controls" xmlns:data="sap.viz.ui5.data"
+	xmlns:feed="sap.viz.ui5.controls.common.feeds" xmlns:core="sap.ui.core">
+	<viz:VizFrame busy="{Chart>/BusyControl/Chart02}" id="Chart02" vizType="column"
+		vizProperties="{Chart>/Properties/vizPropertiesChart02}" height="400px" width="{= ${device>/system/desktop} === true ? '640px' : '100%' }">
+		<viz:dataset>
+			<data:FlattenedDataset data="{Chart>/ChartData/BlockSystems}">
+				<data:dimensions>
+					<data:DimensionDefinition identity="DimDefSystemId" value="{SystemId}" dataType="string"></data:DimensionDefinition>
+				</data:dimensions>
+				<data:measures>
+					<data:MeasureDefinition identity="MeaDefQuantity" name="{i18n>BlocksQuantity}" value="{Qty}"></data:MeasureDefinition>
+					<data:MeasureDefinition identity="MeaDefPercent" name="{i18n>BlocksPercent}" value="{Percent}"></data:MeasureDefinition>
+				</data:measures>
+			</data:FlattenedDataset>
+		</viz:dataset>
+		<viz:feeds>
+			<feed:FeedItem uid="categoryAxis" type="Dimension" values="DimDefSystemId"></feed:FeedItem>
+			<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefPercent"></feed:FeedItem>
+			<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefQuantity"></feed:FeedItem>
+		</viz:feeds>
+	</viz:VizFrame>
+</core:FragmentDefinition>

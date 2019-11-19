@@ -35,9 +35,9 @@ sap.ui.define([
 			----------------------------------------------------*/
 			var _BusyControl = {
 
-				DesktopChart01: true,
-				DesktopChart02: true,
-				DesktopChart03: true
+				Chart01: true,
+				Chart02: true,
+				Chart03: true
 			};
 
 			/*----------------------------------------------------
@@ -156,8 +156,9 @@ sap.ui.define([
 						},
 
 						background: {
+							drawingEffect: "glossy",
+							gradientDirection: "vertical",
 							color: "transparent"
-
 						},
 
 						dataShape: {
@@ -311,7 +312,7 @@ sap.ui.define([
 			function onSuccess(oData, response) {
 
 				// Disable Busy Indicator
-				oJsonModel.setProperty("/BusyControl/DesktopChart01", false);
+				oJsonModel.setProperty("/BusyControl/Chart01", false);
 
 				// Refresh Chart Content (BlockUsers)
 				oJsonModel.setProperty("/ChartData/BlockUsers", oData.results);
@@ -322,7 +323,7 @@ sap.ui.define([
 			function onError(oError) {
 
 				// Disable Busy Indicator
-				oJsonModel.setProperty("/BusyControl/DesktopChart01", false);
+				oJsonModel.setProperty("/BusyControl/Chart01", false);
 
 				MessageBox.alert("Erro on path '/BlockUsers' :" + oError.responseText);
 
@@ -342,7 +343,7 @@ sap.ui.define([
 			oJsonModel.setProperty("/ChartData/BlockUsers", oTemp);
 
 			// Enable Busy Indicator
-			oJsonModel.setProperty("/BusyControl/DesktopChart01", true);
+			oJsonModel.setProperty("/BusyControl/Chart01", true);
 
 			// Get BlockUsers Content
 			oDataModel.read("/BlockUsers", oParam);
@@ -362,21 +363,22 @@ sap.ui.define([
 				var oTempArray = [];
 
 				// Disable Busy Indicator
-				oJsonModel.setProperty("/BusyControl/DesktopChart02", false);
-				oJsonModel.setProperty("/BusyControl/DesktopChart03", false);
+				oJsonModel.setProperty("/BusyControl/Chart02", false);
 
-				// Refresh Chart Content (BlockUsers)
-				if (oJsonModel.getProperty("/Settings/includeEmptySystems"))
-					oTempArray = oData.results;
-				else {
-					
-					for (var i = 0; i < oData.results.length; i++) {
+				// Run All Itens Returned
+				for (var i = 0; i < oData.results.length; i++) {
+
+					// Include Empty Records
+					if (oJsonModel.getProperty("/Settings/includeEmptySystems"))
+						oTempArray = oData.results;
+					else {
 						var _qtyCurrent = Number(oData.results[i].Qty);
-						if (_qtyCurrent != 0)
+						if (_qtyCurrent !== 0)
 							oTempArray.push(oData.results[i]);
 					}
 				}
-debugger;
+
+				// Update Content
 				oJsonModel.setProperty("/ChartData/BlockSystems", oTempArray);
 
 			}
@@ -385,8 +387,8 @@ debugger;
 			function onError(oError) {
 
 				// Disable Busy Indicator
-				oJsonModel.setProperty("/BusyControl/DesktopChart02", false);
-				oJsonModel.setProperty("/BusyControl/DesktopChart03", false);
+				oJsonModel.setProperty("/BusyControl/Chart02", false);
+				oJsonModel.setProperty("/BusyControl/Chart03", false);
 
 				MessageBox.alert("Erro on path '/BlockSystems' :" + oError.responseText);
 
@@ -406,8 +408,8 @@ debugger;
 			oJsonModel.setProperty("/ChartData/BlockSystems", oTemp);
 
 			// Enable Busy Indicator
-			oJsonModel.setProperty("/BusyControl/DesktopChart02", true);
-			oJsonModel.setProperty("/BusyControl/DesktopChart03", true);
+			oJsonModel.setProperty("/BusyControl/Chart02", true);
+			oJsonModel.setProperty("/BusyControl/Chart03", true);
 
 			// Get BlockSystems Content
 			oDataModel.read("/BlockSystems", oParam);

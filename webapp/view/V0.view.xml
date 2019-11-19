@@ -1,14 +1,12 @@
 <mvc:View controllerName="LMBR_CUSTOMER_APP.block_analysis.controller.V0" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-	xmlns:viz="sap.viz.ui5.controls" xmlns:data="sap.viz.ui5.data" xmlns:feed="sap.viz.ui5.controls.common.feeds" xmlns:core="sap.ui.core"
-	xmlns:layout="sap.ui.layout" xmlns="sap.m">
+	xmlns:viz="sap.viz.ui5.controls" xmlns:data="sap.viz.ui5.data" xmlns:feed="sap.viz.ui5.controls.common.feeds" xmlns:layout="sap.ui.layout"
+	xmlns:core="sap.ui.core" xmlns="sap.m">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
 					<!---->
-					<!---->
 					<!--Header Content-->
-					<!---->
 					<!---->
 					<headerContent>
 						<Button press="handleSettingsPress" icon="sap-icon://settings"/>
@@ -16,78 +14,39 @@
 					</headerContent>
 					<content>
 						<!---->
-						<!---->
-						<!---->
 						<!--Elements avaiable for DESKTOP-->
-						<!---->
-						<!---->
 						<!---->
 						<VBox visible="{= ${device>/system/desktop} === true ? true : false }">
 							<HBox>
-								<viz:VizFrame busy="{Chart>/BusyControl/DesktopChart02}" id="DesktopChart02" vizType="column"
-									vizProperties="{Chart>/Properties/vizPropertiesChart02}" height="400px">
-									<viz:dataset>
-										<data:FlattenedDataset data="{Chart>/ChartData/BlockSystems}">
-											<data:dimensions>
-												<data:DimensionDefinition identity="DimDefSystemId" value="{SystemId}" dataType="string"></data:DimensionDefinition>
-											</data:dimensions>
-											<data:measures>
-												<data:MeasureDefinition identity="MeaDefQuantity" name="{i18n>BlocksQuantity}" value="{Qty}"></data:MeasureDefinition>
-												<data:MeasureDefinition identity="MeaDefPercent" name="{i18n>BlocksPercent}" value="{Percent}"></data:MeasureDefinition>
-											</data:measures>
-										</data:FlattenedDataset>
-									</viz:dataset>
-									<viz:feeds>
-										<feed:FeedItem uid="categoryAxis" type="Dimension" values="DimDefSystemId"></feed:FeedItem>
-										<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefPercent"></feed:FeedItem>
-										<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefQuantity"></feed:FeedItem>
-									</viz:feeds>
-								</viz:VizFrame>
-								<viz:VizFrame busy="{Chart>/BusyControl/DesktopChart03}" id="DesktopChart03" vizType="stacked_combination"
-									vizProperties="{Chart>/Properties/vizPropertiesChart03}" height="400px">
-									<viz:dataset>
-										<data:FlattenedDataset data="{Chart>/ChartData/BlockSystems}">
-											<data:dimensions>
-												<data:DimensionDefinition identity="DimDefSystemId" value="{SystemId}" dataType="string"></data:DimensionDefinition>
-											</data:dimensions>
-											<data:measures>
-												<data:MeasureDefinition identity="MeaDefGreenZone" name="{i18n>ChartGoodRecords}" value="{GreenZone}"></data:MeasureDefinition>
-												<data:MeasureDefinition identity="MeaDefYellowZone" name="{i18n>ChartWarningRecords}" value="{YellowZone}"></data:MeasureDefinition>
-												<data:MeasureDefinition identity="MeaDefRedZone" name="{i18n>ChartErrorRecords}" value="{RedZone}"></data:MeasureDefinition>
-												<data:MeasureDefinition identity="MeaDefQtyTot" name="{i18n>ChartTotalRecords}" value="{Qty}"></data:MeasureDefinition>
-											</data:measures>
-										</data:FlattenedDataset>
-									</viz:dataset>
-									<viz:feeds>
-										<feed:FeedItem uid="categoryAxis" type="Dimension" values="DimDefSystemId"></feed:FeedItem>
-										<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefRedZone"></feed:FeedItem>
-										<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefYellowZone"></feed:FeedItem>
-										<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefGreenZone"></feed:FeedItem>
-										<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefQtyTot"></feed:FeedItem>
-									</viz:feeds>
-								</viz:VizFrame>
+								<core:Fragment id="DesktopChart03" fragmentName="LMBR_CUSTOMER_APP.block_analysis.view.V0-Chart03" type="XML"></core:Fragment>
+								<core:Fragment id="DesktopChart02" fragmentName="LMBR_CUSTOMER_APP.block_analysis.view.V0-Chart02" type="XML"></core:Fragment>
 							</HBox>
-							<viz:VizFrame busy="{Chart>/BusyControl/DesktopChart01}" id="DesktopChart01" vizType="column"
-								vizProperties="{Chart>/Properties/vizPropertiesChart01}" height="400px" width="100%">
-								<viz:dataset>
-									<data:FlattenedDataset data="{Chart>/ChartData/BlockUsers}">
-										<data:dimensions>
-											<data:DimensionDefinition identity="DimDefSystemId" value="{SystemId}" dataType="string"></data:DimensionDefinition>
-											<data:DimensionDefinition identity="DimDefUname" value="{Uname}" dataType="string"></data:DimensionDefinition>
-										</data:dimensions>
-										<data:measures>
-											<data:MeasureDefinition identity="MeaDefQty" name="{i18n>BlocksQuantity}" value="{Qty}"></data:MeasureDefinition>
-										</data:measures>
-									</data:FlattenedDataset>
-								</viz:dataset>
-								<viz:feeds>
-									<feed:FeedItem uid="categoryAxis" type="Dimension" values="DimDefSystemId"></feed:FeedItem>
-									<feed:FeedItem uid="categoryAxis" type="Dimension" values="DimDefUname"></feed:FeedItem>
-									<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefQty"></feed:FeedItem>
-								</viz:feeds>
-							</viz:VizFrame>
+							<core:Fragment id="DesktopChart01" fragmentName="LMBR_CUSTOMER_APP.block_analysis.view.V0-Chart01" type="XML"></core:Fragment>
 						</VBox>
+						<!---->
+						<!--Elements avaiable for MOBILE-->
+						<!---->
+						<layout:BlockLayout visible="{= ${device>/system/desktop} === true ? false : true }">
+							<layout:BlockLayoutRow>
+								<layout:BlockLayoutCell width="100%">
+									<core:Fragment id="MobileChart03" fragmentName="LMBR_CUSTOMER_APP.block_analysis.view.V0-Chart03" type="XML"></core:Fragment>
+								</layout:BlockLayoutCell>
+							</layout:BlockLayoutRow>
+							<layout:BlockLayoutRow>
+								<layout:BlockLayoutCell width="100%">
+									<core:Fragment id="MobileChart02" fragmentName="LMBR_CUSTOMER_APP.block_analysis.view.V0-Chart02" type="XML"></core:Fragment>
+								</layout:BlockLayoutCell>
+							</layout:BlockLayoutRow>
+							<layout:BlockLayoutRow>
+								<layout:BlockLayoutCell width="100%">
+									<core:Fragment id="MobileChart01" fragmentName="LMBR_CUSTOMER_APP.block_analysis.view.V0-Chart01" type="XML"></core:Fragment>
+								</layout:BlockLayoutCell>
+							</layout:BlockLayoutRow>
+						</layout:BlockLayout>
 					</content>
+					<!---->
+					<!--Footer Content-->
+					<!---->
 					<footer>
 						<Bar>
 							<contentRight>

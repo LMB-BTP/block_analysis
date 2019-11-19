@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.m.mvc" xmlns:viz="sap.viz.ui5.controls" xmlns:data="sap.viz.ui5.data"
+	xmlns:feed="sap.viz.ui5.controls.common.feeds" xmlns:core="sap.ui.core">
+	<viz:VizFrame busy="{Chart>/BusyControl/Chart03}" id="Chart03" vizType="stacked_combination"
+		vizProperties="{Chart>/Properties/vizPropertiesChart03}" height="400px" width="{= ${device>/system/desktop} === true ? '640px' : '100%' }">
+		<viz:dataset>
+			<data:FlattenedDataset data="{Chart>/ChartData/BlockSystems}">
+				<data:dimensions>
+					<data:DimensionDefinition identity="DimDefSystemId" value="{SystemId}" dataType="string"></data:DimensionDefinition>
+				</data:dimensions>
+				<data:measures>
+					<data:MeasureDefinition identity="MeaDefGreenZone" name="{i18n>ChartGoodRecords}" value="{GreenZone}"></data:MeasureDefinition>
+					<data:MeasureDefinition identity="MeaDefYellowZone" name="{i18n>ChartWarningRecords}" value="{YellowZone}"></data:MeasureDefinition>
+					<data:MeasureDefinition identity="MeaDefRedZone" name="{i18n>ChartErrorRecords}" value="{RedZone}"></data:MeasureDefinition>
+					<data:MeasureDefinition identity="MeaDefQtyTot" name="{i18n>ChartTotalRecords}" value="{Qty}"></data:MeasureDefinition>
+				</data:measures>
+			</data:FlattenedDataset>
+		</viz:dataset>
+		<viz:feeds>
+			<feed:FeedItem uid="categoryAxis" type="Dimension" values="DimDefSystemId"></feed:FeedItem>
+			<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefRedZone"></feed:FeedItem>
+			<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefYellowZone"></feed:FeedItem>
+			<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefGreenZone"></feed:FeedItem>
+			<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefQtyTot"></feed:FeedItem>
+		</viz:feeds>
+	</viz:VizFrame>
+</core:FragmentDefinition>

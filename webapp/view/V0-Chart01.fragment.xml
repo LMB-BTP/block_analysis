@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.m.mvc" xmlns:viz="sap.viz.ui5.controls" xmlns:data="sap.viz.ui5.data"
+	xmlns:feed="sap.viz.ui5.controls.common.feeds" xmlns:core="sap.ui.core">
+	<viz:VizFrame busy="{Chart>/BusyControl/Chart01}" id="Chart01" vizType="column"
+		vizProperties="{Chart>/Properties/vizPropertiesChart01}" height="400px" width="100%">
+		<viz:dataset>
+			<data:FlattenedDataset data="{Chart>/ChartData/BlockUsers}">
+				<data:dimensions>
+					<data:DimensionDefinition identity="DimDefSystemId" value="{SystemId}" dataType="string"></data:DimensionDefinition>
+					<data:DimensionDefinition identity="DimDefUname" value="{Uname}" dataType="string"></data:DimensionDefinition>
+				</data:dimensions>
+				<data:measures>
+					<data:MeasureDefinition identity="MeaDefQty" name="{i18n>BlocksQuantity}" value="{Qty}"></data:MeasureDefinition>
+				</data:measures>
+			</data:FlattenedDataset>
+		</viz:dataset>
+		<viz:feeds>
+			<feed:FeedItem uid="categoryAxis" type="Dimension" values="DimDefSystemId"></feed:FeedItem>
+			<feed:FeedItem uid="categoryAxis" type="Dimension" values="DimDefUname"></feed:FeedItem>
+			<feed:FeedItem uid="valueAxis" type="Measure" values="MeaDefQty"></feed:FeedItem>
+		</viz:feeds>
+	</viz:VizFrame>
+</core:FragmentDefinition>
